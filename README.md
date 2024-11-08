@@ -1,7 +1,7 @@
  # This is a README for IDS 706 Mini 10
 
 ## Status Badge 
-
+[![Install Format Lint Test](https://github.com/nogibjj/PeterdeGuzman_Mini10/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/PeterdeGuzman_Mini10/actions/workflows/main.yml)
 ### Requirements
 -   Use PySpark to perform data processing on a large dataset
 -   Include at least one Spark SQL query and one data transformation
