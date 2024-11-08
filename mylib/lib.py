@@ -125,24 +125,47 @@ def describe(df):
     return df.describe().show()
 
 
-# def example_transform(df):
-#     """does an example transformation on a predefiend dataset"""
-#     conditions = [
-#         (col("GoogleKnowlege_Occupation") == "actor")
-#         | (col("GoogleKnowlege_Occupation") == "actress"),
-#         (col("GoogleKnowlege_Occupation") == "comedian")
-#         | (col("GoogleKnowlege_Occupation") == "comic"),
-#     ]
+def transform_region(df):
+    """performs transform to add Census region column"""
+    conditions = [
+        (col("state") == "CT")
+        | (col("state") == "ME") | (col("state") == "MA") 
+        | (col("state") == "NH") | (col("state") == "RI") 
+        | (col("state") == "VT") | (col("state") == "NJ")
+        | (col("state") == "NY") | (col("state") == "PA"),
+        (col("state") == "IN") | (col("state") == "IL") 
+        | (col("state") == "MI") | (col("state") == "OH") 
+        | (col("state") == "WI") | (col("state") == "IA") 
+        | (col("state") == "KS") | (col("state") == "MN") 
+        | (col("state") == "MO") | (col("state") == "NE")
+        | (col("state") == "ND") | (col("state") == "SD"),
+        (col("state") == "DE") | (col("state") == "DC") 
+        | (col("state") == "FL") | (col("state") == "GA") 
+        | (col("state") == "MD") | (col("state") == "NC")
+        | (col("state") == "SC") | (col("state") == "VA")
+        | (col("state") == "WV") | (col("state") == "AL")
+        | (col("state") == "KY") | (col("state") == "MS")
+        | (col("state") == "TN") | (col("state") == "AR")
+        | (col("state") == "LA") | (col("state") == "OK")
+        | (col("state") == "TX"),
+        (col("state") == "AZ") | (col("state") == "CO") 
+        | (col("state") == "ID") | (col("state") == "NM")
+        | (col("state") == "MT") | (col("state") == "UT")
+        | (col("state") == "NV") | (col("state") == "WY")
+        | (col("state") == "AK") | (col("state") == "CA")
+        | (col("state") == "HI") | (col("state") == "OR")
+        | (col("state") == "WA"),
+    ]
 
-#     categories = ["Acting", "Comedy"]
+    categories = ["Northeast", "Midwest", "South", "West"]
 
-#     df = df.withColumn(
-#         "Occupation_Category",
-#         when(conditions[0], categories[0])
-#         .when(conditions[1], categories[1])
-#         .otherwise("Other"),
-#     )
+    df = df.withColumn(
+        "Occupation_Category",
+        when(conditions[0], categories[0])
+        .when(conditions[1], categories[1])
+        .otherwise("Other"),
+    )
 
-#     log_output("transform data", df.limit(10).toPandas().to_markdown())
+    log_output("transform data", df.limit(10).toPandas().to_markdown())
 
-#     return df.show()
+    return df

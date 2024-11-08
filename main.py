@@ -3,6 +3,7 @@ from mylib.lib import (
     load_data,
     describe,
     query,
+    transform_region,
     start_spark,
     end_spark,
 )
@@ -21,12 +22,11 @@ def main():
     query(
         spark,
         df,
-        # change this
         "SELECT state, gender, COUNT(*) AS genderbystate_count FROM PoliceKillings2015 GROUP BY state, gender ORDER BY state, gender",
         "PoliceKillings2015",
     )
     # example transform
-    #example_transform(df)
+    transform_region(df)
     # end spark session
     end_spark(spark)
 
