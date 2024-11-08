@@ -13,7 +13,7 @@ def main():
     # extract data
     extract()
     # start spark session
-    spark = start_spark("DailyShowGuests")
+    spark = start_spark("PoliceKillings2015")
     # load data into dataframe
     df = load_data(spark)
     # example metrics
@@ -22,6 +22,7 @@ def main():
     query(
         spark,
         df,
+        # change this
         "SELECT YEAR, COUNT(*) AS guest_count FROM guests GROUP BY YEAR ORDER BY YEAR",
         "guests",
     )
