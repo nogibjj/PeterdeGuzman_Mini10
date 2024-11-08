@@ -1,14 +1,37 @@
-# Test function created in main.py script
+# """
+# Main cli or app entry point
+# """
 
-from main import double
+from mylib.lib import (
+    extract,
+    load_data,
+    describe,
+    query,
+    start_spark,
+    end_spark,
+)
 
 
-def test_double():
-    # testing out double function
-    assert double(4) % 2 == 0
-    assert double(11) % 2 == 0
-    assert double(100) % 2 == 0
+def main():
+    # extract data
+    extract()
+    # start spark session
+    spark = start_spark("DailyShowGuests")
+    # load data into dataframe
+    df = load_data(spark)
+    # example metrics
+    describe(df)
+    # query
+    query(
+        spark,
+        df,
+        "SELECT YEAR, COUNT(*) AS guest_count FROM guests GROUP BY YEAR ORDER BY YEAR",
+        "guests",
+    )
+    # example transform
+    example_transform(df)
+    # end spark session
+    end_spark(spark)
 
 
-if __name__ == "__main__":
-    test_double()
+# def main()
