@@ -168,4 +168,4 @@ def transform_region(df):
 
     log_output("transform data", df.limit(10).toPandas().to_markdown())
 
-    return df
+    return df.show()

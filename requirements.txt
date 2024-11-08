@@ -8,3 +8,4 @@ pandas
 pyspark
 tabulate
 requests
+ruff

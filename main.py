@@ -25,7 +25,7 @@ def main():
         "SELECT state, gender, COUNT(*) AS genderbystate_count FROM PoliceKillings2015 GROUP BY state, gender ORDER BY state, gender",
         "PoliceKillings2015",
     )
-    # example transform
+    # transform by region
     transform_region(df)
     # end spark session
     end_spark(spark)
@@ -33,4 +33,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
