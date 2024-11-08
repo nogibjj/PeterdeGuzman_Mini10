@@ -1,4 +1,4 @@
-name: PeterdeGuzman
+name: Install Format Lint Test
 
 on: [push]
 
